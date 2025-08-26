@@ -10,9 +10,18 @@ public class EnemyFactory : MonoBehaviour
     {
         idEnemies = new Dictionary<string, Enemy>();
 
-        foreach(var enemy in enemies)
+        foreach(var i in enemies)
         {
-            idEnemies.Add(enemy.Id, enemy);
+            idEnemies.Add(i.Name, i);
         }
+    }
+
+    public Enemy CreateEnemy(string name)
+    {
+        if(!idEnemies.TryGetValue(name, out Enemy enemy))
+        {
+            return null;
+        }
+        return Instantiate(enemy) as Enemy;
     }
 }

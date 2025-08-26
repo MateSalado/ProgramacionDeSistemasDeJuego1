@@ -4,15 +4,10 @@ using UnityEngine;
 
 public class Enemy : MonoBehaviour
 {
-    public string Id;
-    void Start()
+    [SerializeField] private string showName;
+    public string Name;
+    private void Awake()
     {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        Debug.Log(Name);
     }
 }
