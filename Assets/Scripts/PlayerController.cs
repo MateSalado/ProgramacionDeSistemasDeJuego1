@@ -5,6 +5,7 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
     public float speed = 5f;
+    private IWeapon weapon;
 
     void Update()
     {
@@ -12,6 +13,17 @@ public class PlayerController : MonoBehaviour
         float vertical = Input.GetAxisRaw("Vertical");
 
         transform.Translate(horizontal * Time.deltaTime * speed, 0f, vertical * Time.deltaTime * speed);
+
+        if(Input.GetKeyDown(KeyCode.Mouse0)) 
+        {
+            weapon.Attack();
+        }
+    }
+
+    public void SetWeapon(IWeapon w)
+    {
+        weapon = w;
+        Debug.Log($"Selected weapon: {weapon.Name}");
     }
 
 }
