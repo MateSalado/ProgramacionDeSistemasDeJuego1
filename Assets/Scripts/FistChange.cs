@@ -4,10 +4,14 @@ using UnityEngine;
 
 public class FistChange : MonoBehaviour
 {
-    public PlayerController player;
     private IWeapon weapon = new Fist();
     public void OnTriggerEnter(Collider other)
     {
-        player.SetWeapon(weapon);
+        if (other.CompareTag("Player"))
+        {
+            var playerController = other.GetComponent<PlayerController>();
+
+            playerController.SetWeapon(weapon);
+        }
     }
 }

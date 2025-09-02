@@ -5,7 +5,7 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
     public float speed = 5f;
-    private IWeapon weapon;
+    private IWeapon currentWeapon = new Fist();
 
     void Update()
     {
@@ -16,14 +16,15 @@ public class PlayerController : MonoBehaviour
 
         if(Input.GetKeyDown(KeyCode.Mouse0)) 
         {
-            weapon.Attack();
+            currentWeapon.Attack();
         }
     }
 
     public void SetWeapon(IWeapon w)
     {
-        weapon = w;
-        Debug.Log($"Selected weapon: {weapon.Name}");
+        currentWeapon = w ?? new Fist();
+
+        Debug.Log($"Selected weapon: {currentWeapon.Name}");
     }
 
 }
